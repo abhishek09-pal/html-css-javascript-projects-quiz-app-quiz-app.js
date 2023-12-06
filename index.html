@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz app</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <h1 id="question">quiz question </h1>
+
+        <ul>
+            <li> <input type="radio" name="options" id="option-a">
+                <label for="option-a" class="answer" id="option-text-a">option a</label>
+            </li>
+            <li>
+                <input type="radio" name="options" id="option-b">
+                <label for="option-b" class="answer" id="option-text-b">option b</label>
+            </li>
+            <li>
+                <input type="radio" name="options" id="option-c">
+                <label for="option-c" class="answer" id="option-text-c">option c</label>
+            </li>
+            <li>
+                <input type="radio" name="options" id="option-d">
+                <label for="option-d" class="answer" id="option-text-d">option d</label>
+            </li>
+
+
+
+
+        </ul>
+
+
+        <input type="submit" id="btn">
+
+        <script>
+            const quiz = [
+                {
+                    question: "What is the most used programming language in 2023?",
+                    ans1text: "Java",
+                    ans2text: "C",
+                    ans3text: "Python",
+                    ans4text: "JavaScript",
+                    answer: "JavaScript",
+                },
+                {
+                    question: "Who is the President of US?",
+                    ans1text: "Joe Biden",
+                    ans2text: "Donald Trump",
+                    ans3text: "Barack Obama",
+                    ans4text: "George Bush",
+                    answer: "Joe Biden",
+                }, {
+                    question: "What does HTML stand for?",
+                    ans1text: "Hypertext Markup Language",
+                    ans2text: "Cascading Style Sheet",
+                    ans3text: "Jason Object Notation",
+                    ans4text: "Helicopters Terminals Motorboats Lamborginis",
+                    answer: "Hypertext Markup Language",
+                },
+                {
+                    question: "What year was JavaScript launched?",
+                    ans1text: "1996",
+                    ans2text: "1995",
+                    ans3text: "1994",
+                    ans4text: "none of the above",
+                    answer: "1995",
+
+                }
+            ]
+
+            const question = document.getElementById("question");
+            console.log(question);
+            console.log(question.textContent);
+
+            const option_a = document.getElementById("option-text-a");
+            const option_b = document.getElementById("option-text-b");
+            const option_c = document.getElementById("option-text-c");
+            const option_d = document.getElementById("option-text-d");
+            const answerElement = document.querySelectorAll(".answer");
+            console.log(option_a);
+            console.log(option_a);
+            console.log(option_a.textContent);
+            console.log(option_b);
+            console.log(option_b.textContent);
+            console.log(option_c);
+            console.log(option_c.textContent);
+            console.log(option_d);
+            console.log(option_d.textContent);
+
+
+            const submit = document.getElementById("btn");
+            console.log(btn);
+            let currentquestion = 0;
+            let score = 0;
+            console.log(quiz[currentquestion].question);
+            console.log(quiz[currentquestion].ans1text);
+            console.log(quiz[currentquestion].ans2text);
+            console.log(quiz[currentquestion].ans3text);
+            console.log(quiz[currentquestion].ans4text);
+
+
+            question.textContent = quiz[currentquestion].question;
+            option_a.textContent = quiz[currentquestion].ans1text;
+            option_b.textContent = quiz[currentquestion].ans2text;
+            option_c.textContent = quiz[currentquestion].ans3text;
+            option_d.textContent = quiz[currentquestion].ans4text;
+
+        //    console.log(answerElement);
+
+        submit.addEventListener("click",() =>{
+          const checkedAns=document.querySelector('input[type="radio"]:checked')
+        //   console.log(checkedAns.nextElementSibling.textContent);
+          if(checkedAns === null){
+            alert(" please select an answer");
+          }else{
+        if( checkedAns.nextElementSibling.textContent === quiz[currentquestion].answer){
+            score++;
+        }
+
+        currentquestion++;
+        if( currentquestion < quiz.length){
+            question.textContent = quiz[currentquestion].question;
+            option_a.textContent = quiz[currentquestion].ans1text;
+            option_b.textContent = quiz[currentquestion].ans2text;
+            option_c.textContent = quiz[currentquestion].ans3text;
+            option_d.textContent = quiz[currentquestion].ans4text;
+            checkedAns.checked = false;
+        }else{
+            alert("Your score is " + score + " out of " + quiz.length);
+            location.reload();
+        }
+
+    }
+        })
+        </script>
+    </div>
+</body>
+
+</html>
